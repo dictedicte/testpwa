@@ -1,16 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-  
-    // Load saved states
-    checkboxes.forEach(cb => {
-      const saved = localStorage.getItem(cb.id);
-      if (saved !== null) {
-        cb.checked = saved === "true";
-      }
-  
-      // Save state whenever checkbox changes
-      cb.addEventListener("change", () => {
-        localStorage.setItem(cb.id, cb.checked);
-      });
+document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
+  .forEach(el => {
+    el.addEventListener('change', () => {
+      localStorage.setItem(el.id, el.checked);
     });
+  });
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type="checkbox"], input[type="radio"]')
+      .forEach(el => {
+        const saved = localStorage.getItem(el.id);
+        if (saved !== null) {
+          el.checked = saved === "true";
+        }
+      });
   });
