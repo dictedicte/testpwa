@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My PWA Example</title>
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#317EFB">
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: pink;}
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+
+<h1>Hello from my PWA!</h1>
+<p>This website works offline after first load.</p>
+<label for="check"><input type="checkbox" id="check" checked="">Check</label>
+<label for="check2"><input type="checkbox" id="check2">Check2</label>
+<label for="check3"><input type="checkbox" id="check3">Check3</label>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service worker registered"))
+      .catch(err => console.error("Service worker registration failed", err));
+  }
+</script>
+
+</body>
+</html>
